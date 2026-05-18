@@ -1,1 +1,299 @@
+# Gmail Style UI/UX Demo (Safe Educational Version)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI/UX Gmail Demo</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f1f3f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .left {
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      color: white;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .left h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .left p {
+      font-size: 16px;
+      line-height: 1.7;
+      opacity: 0.95;
+    }
+
+    .right {
+      padding: 50px 40px;
+    }
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      color: #ea4335;
+      margin-bottom: 20px;
+    }
+
+    .logo span:nth-child(2) { color: #4285f4; }
+    .logo span:nth-child(3) { color: #fbbc05; }
+    .logo span:nth-child(4) { color: #34a853; }
+    .logo span:nth-child(5) { color: #ea4335; }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 30px;
+      gap: 10px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #e8eaed;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .tab-btn.active {
+      background: #4285f4;
+      color: white;
+    }
+
+    form {
+      display: none;
+      animation: fade 0.3s ease;
+    }
+
+    form.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #444;
+      font-size: 14px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #4285f4;
+      box-shadow: 0 0 0 3px rgba(66,133,244,0.15);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #4285f4;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #3367d6;
+    }
+
+    .demo-note {
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #f8f9fa;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    @media(max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .left {
+        padding: 35px;
+      }
+
+      .right {
+        padding: 35px 25px;
+      }
+
+      .left h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="left">
+      <h1>UI/UX Gmail Demo</h1>
+      <p>
+        This is a frontend educational demo inspired by a modern Gmail-style
+        sign in and sign up interface. It is designed strictly for UI/UX
+        teaching, form layout practice, spacing, responsiveness, typography,
+        and interaction design lessons.
+      </p>
+    </div>
+
+    <div class="right">
+
+      <div class="logo">
+        <span>G</span><span>m</span><span>a</span><span>i</span><span>l</span>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showForm('signin')">
+          Sign In
+        </button>
+
+        <button class="tab-btn" onclick="showForm('signup')">
+          Sign Up
+        </button>
+      </div>
+
+      <!-- SIGN IN -->
+      <form id="signin" class="active">
+
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn">Sign In</button>
+      </form>
+
+      <!-- SIGN UP -->
+      <form id="signup">
+
+        <div class="input-group">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter your full name" required>
+        </div>
+
+        <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <input type="password" placeholder="Create a password" required>
+        </div>
+
+        <button type="submit" class="btn">Create Account</button>
+      </form>
+
+      <div class="demo-note">
+        Educational demo only. This project does not collect, store, or send
+        passwords or personal data anywhere.
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-btn');
+    const forms = document.querySelectorAll('form');
+
+    function showForm(id) {
+      forms.forEach(form => {
+        form.classList.remove('active');
+      });
+
+      document.getElementById(id).classList.add('active');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      event.target.classList.add('active');
+    }
+
+    // Demo only
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        alert(
+          'Demo submitted successfully!\n\nThis is a frontend-only UI/UX lesson demo.'
+        );
+      });
+    });
+  </script>
+
+</body>
+</html>
+```
+
+You can save this as `index.html` and upload it directly to GitHub Pages for your UI/UX lesson demo.
 
